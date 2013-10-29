@@ -27,6 +27,11 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
+# Get bootstrap good looks
+gem "therubyracer"
+gem "less-rails" #Sprockets (what Rails uses for its asset pipeline) supports LESS
+gem "twitter-bootstrap-rails"
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
