@@ -15,7 +15,7 @@
 /log/*.log
 /tmp
 
-# Rails general
+# Rails general to ignore
 *.rbc
 *.sassc
 .sass-cache
@@ -35,3 +35,4 @@ rerun.txt
 pickle-email-*.html
 .project
 config/initializers/secret_token.rb
+rails_best_practices_output.html
