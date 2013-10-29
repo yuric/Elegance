@@ -29,9 +29,9 @@ class PollsController < ApplicationController
     respond_to do |format|
       if @poll.save
         format.html { redirect_to @poll, notice: 'Poll was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @poll }
+        format.json { render 'show', status: :created, location: @poll }
       else
-        format.html { render action: 'new' }
+        format.html { render 'new' }
         format.json { render json: @poll.errors, status: :unprocessable_entity }
       end
     end
@@ -45,7 +45,7 @@ class PollsController < ApplicationController
         format.html { redirect_to @poll, notice: 'Poll was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: 'edit' }
+        format.html { render 'edit' }
         format.json { render json: @poll.errors, status: :unprocessable_entity }
       end
     end
