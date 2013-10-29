@@ -22,10 +22,9 @@ We encourage you to contribute to Elegance!
 ## Code Status
 
 TODO
-![Build Status](https://api.travis-ci.org/yuric/elegance.png) &nbsp;
+<!-- ![Build Status](https://api.travis-ci.org/yuric/elegance.png) &nbsp;
 ![Code Climate](https://codeclimate.com/github/yuric/elegance.png) &nbsp;
-![Coverage Status](https://coveralls.io/repos/yuric/elegance/badge.png?branch=master)
-
+![Coverage Status](https://coveralls.io/repos/yuric/elegance/badge.png?branch=master) -->
 ## License
 
 Elegance is released under the [MIT License](https://www.github.com/yuric/elegance/LICENSE).
