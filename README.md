@@ -21,9 +21,9 @@ We encourage you to contribute to Elegance!
 ## Code Status
 
 TODO
-<!-- ![Build Status](https://api.travis-ci.org/yuric/elegance.png) &nbsp;
-![Code Climate](https://codeclimate.com/github/yuric/elegance.png) &nbsp;
-![Coverage Status](https://coveralls.io/repos/yuric/elegance/badge.png?branch=master) -->
+ ![Build Status](https://api.travis-ci.org/yuric/elegance.png) &nbsp;
+ ![Code Climate](https://codeclimate.com/github/yuric/elegance.png) &nbsp;
+<!-- ![Coverage Status](https://coveralls.io/repos/yuric/elegance/badge.png?branch=master) -->
 
 ## License
 
