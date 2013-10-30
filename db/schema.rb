@@ -11,14 +11,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131029053924) do
+ActiveRecord::Schema.define(version: 20131030060039) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "answers", force: true do |t|
+    t.integer  "poll_id"
+    t.string   "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "polls", force: true do |t|
     t.text     "question"
     t.string   "ip"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "votes", force: true do |t|
+    t.string   "ip"
+    t.string   "browser"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.integer  "answer_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
