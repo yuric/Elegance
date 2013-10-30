@@ -19,11 +19,15 @@ class PollsController < ApplicationController
 
   # GET /polls/1/edit
   def edit
-    if @poll.can_edit_poll?
-      # golden long if for clarity
+    if @poll.poll_has_votes?
+      respond_to do |format|
+        format.html { redirect_to polls_url, alert: 'Poll already has votes. Can not be edited.' }
+        format.json { head :no_content }
+      end
+    elsif @poll.i_own?(request.remote_ip)
     else
       respond_to do |format|
-        format.html { redirect_to polls_url, alert: 'Poll already has votes. You cannot edit it anymore' }
+        format.html { redirect_to polls_url, alert: 'No permission to edit this poll. IP Spoof much?' }
         format.json { head :no_content }
       end
     end
