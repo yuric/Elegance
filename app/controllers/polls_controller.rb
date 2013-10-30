@@ -15,11 +15,12 @@ class PollsController < ApplicationController
   # GET /polls/new
   def new
     @poll = Poll.new
+    2.times {@poll.answers.build}# if @poll.answers.empty?
   end
 
   # GET /polls/1/edit
   def edit
-    if @poll.poll_has_votes?
+    if false#@poll.poll_has_votes?
       respond_to do |format|
         format.html { redirect_to polls_url, alert: 'Poll already has votes. Can not be edited.' }
         format.json { head :no_content }
@@ -38,8 +39,9 @@ class PollsController < ApplicationController
   def create
     @poll = Poll.new(poll_params)
     @poll.ip = request.remote_ip
+    # @poll.answers.build(params[:poll][:answers])
     respond_to do |format|
-      if @poll.save
+      if @poll.save && @poll.answers.build(params[:poll][:answers])
         format.html { redirect_to @poll, notice: 'Poll was successfully created.' }
         format.json { render 'show', status: :created, location: @poll }
       else
@@ -82,6 +84,6 @@ class PollsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def poll_params
-      params.require(:poll).permit(:question)
+      params.require(:poll).permit(:question, answers_attributes: [:id, :poll_id, :content, :_destroy])
     end
 end

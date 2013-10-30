@@ -13,9 +13,14 @@
   <div class="control-group">
     <%= f.label :question, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :question, :class => 'text_field' %>
+      <%= f.text_area :question, :class => 'text_field' %>
     </div>
   </div>
+  <%i = 0%>
+  <%= f.fields_for :answers do |builder| %>
+    <%i += 1%>
+    <%= render 'answer_fields', :f => builder, :i => i %>
+  <% end %>
 
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>
