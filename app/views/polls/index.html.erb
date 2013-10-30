@@ -18,6 +18,8 @@
         <td><%= poll.question %></td>
         <td><%=l poll.created_at %></td>
         <td>
+          <%= link_to t('.vote', :default => "Vote"),
+                      edit_poll_path(poll), :class => 'btn btn-mini btn-success' %>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_poll_path(poll), :class => 'btn btn-mini' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
