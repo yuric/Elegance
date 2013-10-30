@@ -19,6 +19,18 @@ class PollsController < ApplicationController
 
   # GET /polls/1/edit
   def edit
+    if @poll.poll_has_votes?
+      respond_to do |format|
+        format.html { redirect_to polls_url, alert: 'Poll already has votes. Can not be edited.' }
+        format.json { head :no_content }
+      end
+    elsif @poll.i_own?(request.remote_ip)
+    else
+      respond_to do |format|
+        format.html { redirect_to polls_url, alert: 'No permission to edit this poll. IP Spoof much?' }
+        format.json { head :no_content }
+      end
+    end
   end
 
   # POST /polls
@@ -41,6 +53,7 @@ class PollsController < ApplicationController
   # PATCH/PUT /polls/1.json
   def update
     respond_to do |format|
+      
       if @poll.update(poll_params)
         format.html { redirect_to @poll, notice: 'Poll was successfully updated.' }
         format.json { head :no_content }
@@ -69,6 +82,6 @@ class PollsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def poll_params
-      params.require(:poll).permit(:question, :ip)
+      params.require(:poll).permit(:question)
     end
 end
