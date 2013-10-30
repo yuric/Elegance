@@ -20,7 +20,7 @@ class PollsController < ApplicationController
 
   # GET /polls/1/edit
   def edit
-    if false#@poll.poll_has_votes?
+    if @poll.poll_has_votes?
       respond_to do |format|
         format.html { redirect_to polls_url, alert: 'Poll already has votes. Can not be edited.' }
         format.json { head :no_content }

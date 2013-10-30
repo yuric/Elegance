@@ -15,11 +15,3 @@
 //= require twitter/bootstrap
 //= require turbolinks
 //= require_tree .
-
-$(document).ready(function() {
-    return $('form').on('click', '.remove_fields', function(event) {
-      $(this).prev('input[type=hidden]').val('1');
-      $(this).closest('controls').hide();
-      return event.preventDefault();
-    });
-  });

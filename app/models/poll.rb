@@ -3,7 +3,7 @@ class Poll < ActiveRecord::Base
   has_many :answers
   validates_presence_of :question
   validates :ip, :presence => true, :format => { :with => Resolv::IPv4::Regex }
-  accepts_nested_attributes_for :answers, :reject_if => lambda { |a| a['content'].blank? || a['id'] }, allow_destroy: true
+  accepts_nested_attributes_for :answers,  allow_destroy: true#:reject_if => lambda { |a| a['content'].blank? },
   #validate :must_have_answers
 
   def must_have_answers
