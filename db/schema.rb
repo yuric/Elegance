@@ -17,8 +17,8 @@ ActiveRecord::Schema.define(version: 20131029053924) do
   enable_extension "plpgsql"
 
   create_table "polls", force: true do |t|
-    t.integer  "voter_id"
     t.text     "question"
+    t.string   "ip"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

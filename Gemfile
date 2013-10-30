@@ -38,6 +38,25 @@ group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
 end
+group :test do
+  gem 'cucumber-rails', :require => false
+  gem 'rspec-rails'
+end
+group :development, :test do
+#  gem 'sqlite3'
+  gem 'awesome_print'#, :require => 'ap'
+  gem 'machinist'
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  #gem 'rails-dev-tweaks', '~> 0.5.0'
+  #gem 'rack-mini-profiler'
+  gem 'bullet'
+  gem 'uniform_notifier'
+  gem 'ruby-growl'
+  #gem 'meta_request'
+  #> Bumbler::Stats.all_slow_items  #will show you the gems which load the slowest.
+end
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

@@ -1,9 +1,8 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  voter_id: 1
-  question: MyText
-
+full:
+  question: Welcome to our testing scenerio. I would love to go over all feature with you.
+  ip: 79.182.10.1
 two:
-  voter_id: 1
   question: MyText
+  ip: 79.182.10.1

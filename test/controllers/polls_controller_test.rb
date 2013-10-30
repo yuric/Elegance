@@ -2,7 +2,7 @@ require 'test_helper'
 
 class PollsControllerTest < ActionController::TestCase
   setup do
-    @poll = polls(:one)
+    @poll = polls(:full)
   end
 
   test "should get index" do
@@ -18,7 +18,7 @@ class PollsControllerTest < ActionController::TestCase
 
   test "should create poll" do
     assert_difference('Poll.count') do
-      post :create, poll: { question: @poll.question, voter_id: @poll.voter_id }
+      post :create, poll: { question: @poll.question, ip: @poll.ip }
     end
 
     assert_redirected_to poll_path(assigns(:poll))
@@ -35,7 +35,7 @@ class PollsControllerTest < ActionController::TestCase
   end
 
   test "should update poll" do
-    patch :update, id: @poll, poll: { question: @poll.question, voter_id: @poll.voter_id }
+    patch :update, id: @poll, poll: { question: @poll.question, ip: @poll.ip }
     assert_redirected_to poll_path(assigns(:poll))
   end
 

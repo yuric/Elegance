@@ -1,10 +1,15 @@
 <%= form_for @poll, :html => { :class => 'form-horizontal' } do |f| %>
-  <div class="control-group">
-    <%= f.label :voter_id, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :voter_id, :class => 'text_field' %>
+  <% if @poll.errors.any? %>
+    <div id="error_explanation">
+      <% flash[:error] = "<h2> #{pluralize(@poll.errors.count, "error")} prohibited this poll from being saved:</h2>"%>
+      <ul>
+      <% @poll.errors.full_messages.each do |msg| %>
+        <% flash[:error] += "<li> #{msg} </li>" %>
+      <% end %>
+      </ul>
     </div>
-  </div>
+  <% end %>
+
   <div class="control-group">
     <%= f.label :question, :class => 'control-label' %>
     <div class="controls">
