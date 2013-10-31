@@ -5,6 +5,12 @@ class VotesController < ApplicationController
   # GET /votes.json
   def index
     @votes = Vote.all
+    if params[:poll]
+      @poll = Poll.find(params[:poll])
+    else
+      @poll = Poll.new
+    end
+    
   end
 
   # GET /votes/1
@@ -15,13 +21,13 @@ class VotesController < ApplicationController
   # GET /votes/new
   def new
     @vote = Vote.new
+    @vote.poll_id = Poll.find(params[:poll]).id
     @answers = Answer.where(:poll_id => params[:poll])
   end
 
   # GET /votes/1/edit
   def edit
     @answers = Answer.where(:poll_id =>@vote.answer.poll.id)
-    
   end
 
   # POST /votes
@@ -31,9 +37,17 @@ class VotesController < ApplicationController
     @vote.ip = request.remote_ip
     @vote.browser = Vote.browser_detection(request.env['HTTP_USER_AGENT'])
     #latitude and longitude detection for later
+    sdf
     respond_to do |format|
-      if @vote.save
-        format.html { redirect_to polls_url, notice: 'Vote was successfully cast.' }
+      puts Vote.find_by_ip_and_poll_id(@vote.ip, @vote.poll_id).id
+      puts @vote.ip
+      puts @vote.poll_id
+      puts params[:poll]
+      puts "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+      if Vote.find_by_ip_and_poll_id(@vote.ip, @vote.poll_id)
+        format.html { redirect_to "#{polls_url}", notice: 'You have already cast a successful vote for this poll. Try another one.' }        
+      elsif @vote.save
+        format.html { redirect_to "#{votes_url}?poll=#{@vote.answer.poll.id}", notice: 'Vote was successfully cast.' }
         format.json { render action: 'show', status: :created, location: @vote }
       else
         format.html { render action: 'new' }
@@ -74,6 +88,6 @@ class VotesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def vote_params
-      params.require(:vote).permit(:answer_id)
+      params.require(:vote).permit(:answer_id, :poll_id)
     end
 end
