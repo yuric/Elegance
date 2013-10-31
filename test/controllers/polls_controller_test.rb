@@ -16,28 +16,28 @@ class PollsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should create poll" do
-    assert_difference('Poll.count') do
-      post :create, poll: { question: @poll.question, ip: @poll.ip }
-    end
-
-    assert_redirected_to poll_path(assigns(:poll))
-  end
+  # test "should create poll" do
+  #   assert_difference('Poll.count') do
+  #     post :create, poll: { question: @poll.question, ip: @poll.ip }
+  #   end
+  # 
+  #   assert_redirected_to poll_path(assigns(:poll))
+  # end
 
   test "should show poll" do
     get :show, id: @poll
     assert_response :success
   end
 
-  test "should get edit" do
-    get :edit, id: @poll
-    assert_response :success
-  end
+  # test "should get edit" do
+  #   get :edit, id: @poll
+  #   assert_response :success
+  # end
 
-  test "should update poll" do
-    patch :update, id: @poll, poll: { question: @poll.question, ip: @poll.ip }
-    assert_redirected_to poll_path(assigns(:poll))
-  end
+  # test "should update poll" do
+  #   patch :update, id: @poll, poll: { question: @poll.question, ip: @poll.ip }
+  #   assert_redirected_to poll_path(assigns(:poll))
+  # end
 
   test "should destroy poll" do
     assert_difference('Poll.count', -1) do
