@@ -7,6 +7,11 @@ class VotesController < ApplicationController
     @votes = Vote.all
     if params[:poll]
       @poll = Poll.find(params[:poll])
+      respond_to do |format|
+        if Vote.find_by_ip_and_poll_id(request.remote_ip, @poll.id) == nil
+          format.html { redirect_to "#{new_vote_url}?poll=#{@poll.id}", notice: 'You have not voted for this poll yet. Cast a vote to view results.' }
+        end
+      end
     else
       @poll = Poll.new
     end
@@ -37,13 +42,7 @@ class VotesController < ApplicationController
     @vote.ip = request.remote_ip
     @vote.browser = Vote.browser_detection(request.env['HTTP_USER_AGENT'])
     #latitude and longitude detection for later
-    sdf
     respond_to do |format|
-      puts Vote.find_by_ip_and_poll_id(@vote.ip, @vote.poll_id).id
-      puts @vote.ip
-      puts @vote.poll_id
-      puts params[:poll]
-      puts "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
       if Vote.find_by_ip_and_poll_id(@vote.ip, @vote.poll_id)
         format.html { redirect_to "#{polls_url}", notice: 'You have already cast a successful vote for this poll. Try another one.' }        
       elsif @vote.save
