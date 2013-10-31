@@ -1,0 +1,19 @@
+<%= form_for @vote, :html => { :class => 'form-horizontal' } do |f| %>
+<div class="alert alert-info">
+    <p><strong>Question:</strong> <%=Poll.find(params[:poll]).question%></p>
+</div>
+
+
+<div class="control-group">
+  <%= f.label :answer_id, 'Cast vote', :class => 'control-label' %>
+  <div class="controls">
+    <%= f.collection_select :answer_id, @answers, :id, :content %>
+  </div>
+</div>
+
+  <div class="form-actions">
+    <%= f.submit "Cast Vote", :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                votes_path, :class => 'btn' %>
+  </div>
+<% end %>

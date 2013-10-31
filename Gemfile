@@ -32,6 +32,7 @@ gem "therubyracer"
 gem "less-rails" #Sprockets (what Rails uses for its asset pipeline) supports LESS
 gem "twitter-bootstrap-rails"
 
+#check test coverage
 gem 'coveralls', require: false
 
 group :doc do
