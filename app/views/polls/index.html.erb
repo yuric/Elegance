@@ -18,13 +18,15 @@
         <td>
           <%= link_to t('.vote', :default => "Vote"),
                       "/votes/new?poll=#{poll.id}", :class => 'btn btn-mini btn-success' %>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+          <%if !poll.poll_has_votes?%>
+            <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_poll_path(poll), :class => 'btn btn-mini' %>
-          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+          <%end%>             
+          <!-- <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                       poll_path(poll),
                       :method => :delete,
                       :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                      :class => 'btn btn-mini btn-danger' %>
+                      :class => 'btn btn-mini btn-danger' %> -->
         </td>
       </tr>
     <% end %>
@@ -34,3 +36,4 @@
 <%= link_to t('.new', :default => t("helpers.links.new")),
             new_poll_path,
             :class => 'btn btn-primary' %>
+
