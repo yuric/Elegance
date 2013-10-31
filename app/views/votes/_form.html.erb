@@ -1,6 +1,7 @@
 <%= form_for @vote, :html => { :class => 'form-horizontal' } do |f| %>
 <div class="alert alert-info">
     <p><strong>Question:</strong> <%=Poll.find(params[:poll]).question%></p>
+    <%= f.hidden_field :poll_id %>
 </div>
 
 

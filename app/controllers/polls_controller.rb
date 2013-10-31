@@ -42,7 +42,7 @@ class PollsController < ApplicationController
     # @poll.answers.build(params[:poll][:answers])
     respond_to do |format|
       if @poll.save && @poll.answers.build(params[:poll][:answers])
-        format.html { redirect_to @poll, notice: 'Poll was successfully created.' }
+        format.html { redirect_to polls_url, notice: 'Poll was successfully created.' }
         format.json { render 'show', status: :created, location: @poll }
       else
         format.html { render 'new' }
@@ -57,7 +57,7 @@ class PollsController < ApplicationController
     respond_to do |format|
       
       if @poll.update(poll_params)
-        format.html { redirect_to @poll, notice: 'Poll was successfully updated.' }
+        format.html { redirect_to polls_url, notice: 'Poll was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render 'edit' }
