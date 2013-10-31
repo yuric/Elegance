@@ -4,14 +4,14 @@ class Poll < ActiveRecord::Base
   validates_presence_of :question
   validates :ip, :presence => true, :format => { :with => Resolv::IPv4::Regex }
   accepts_nested_attributes_for :answers,  allow_destroy: true#:reject_if => lambda { |a| a['content'].blank? },
-  #validate :must_have_answers
+  validate :must_have_answers
 
   def must_have_answers
     if self.answers.empty?
-      errors.add(:base, 'Must have at least 3 options/answers')
-    elsif self.answers.count < 2
-      errors.add(:base, "B: Must have at least 3 options/answers #{self.answers.count}")
-    elsif self.answers.count > 5
+      errors.add(:base, 'Must have at least 2 options/answers')
+    elsif self.answers.size < 2
+      errors.add(:base, "Must have at least 2 options/answers #{self.answers.count}")
+    elsif self.answers.size > 5
       errors.add(:base, 'Must have no more than 5 options/answers')
     else
     end
