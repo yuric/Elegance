@@ -33,7 +33,7 @@ class VotesController < ApplicationController
     #latitude and longitude detection for later
     respond_to do |format|
       if @vote.save
-        format.html { redirect_to @vote, notice: 'Vote was successfully created.' }
+        format.html { redirect_to polls_url, notice: 'Vote was successfully cast.' }
         format.json { render action: 'show', status: :created, location: @vote }
       else
         format.html { render action: 'new' }
@@ -47,7 +47,7 @@ class VotesController < ApplicationController
   def update
     respond_to do |format|
       if @vote.update(vote_params)
-        format.html { redirect_to @vote, notice: 'Vote was successfully updated.' }
+        format.html { redirect_to polls_url, notice: 'Vote was successfully cast.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

@@ -16,7 +16,7 @@
     </tr>
   </thead>
   <tbody>
-    <% @votes.each do |vote| %>
+    <% @votes.each do |vote| %>  
       <tr>
         <td><%= link_to vote.id, vote_path(vote) %></td>
         <td><%= vote.ip %></td>
@@ -38,6 +38,42 @@
     <% end %>
   </tbody>
 </table>
+
+
+<!-- TODO: Move this logic to model -->
+<%Poll.all.each do |poll|%>
+  
+  <div class="alert alert-info">
+    <strong>Question:</strong><%="#{poll.question}\n"%>
+  </div>
+  <% poll.answers.each do |answer|%>
+    <div class="well">
+  
+      <%="\t#{answer.content}"%> (<%="#{answer.votes.count}\n"%> votes)
+      <div class="progress progress-striped active">
+        <div class="bar" style="width: <%=answer.votes.count%>1%;"></div>
+      </div>
+    </div>
+  <%end%>
+<%end%>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <%= link_to t('.new', :default => t("helpers.links.new")),
             new_vote_path,
