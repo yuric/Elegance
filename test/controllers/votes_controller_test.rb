@@ -11,11 +11,6 @@ class VotesControllerTest < ActionController::TestCase
     assert_not_nil assigns(:votes)
   end
 
-  # test "should get new" do
-  #   get :new, poll: @vote.answer.poll.id
-  #   assert_response :success
-  # end
-
   # test "should create vote" do
   #   assert_difference('Vote.count') do
   #     post :create, vote: { answer_id: @vote.answer_id, browser: @vote.browser, ip: @vote.ip, latitude: @vote.latitude, longitude: @vote.longitude }
