@@ -4,4 +4,3 @@ rvm:
 before_script:
   - psql -c "CREATE ROLE generic WITH CREATEDB LOGIN;" -U postgres
 script: bundle exec rspec
-script: bundle exec rake test
