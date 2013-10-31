@@ -7,10 +7,10 @@ class VotesController < ApplicationController
     @votes = Vote.all
     if params[:poll]
       @poll = Poll.find(params[:poll])
-      respond_to do |format|
-        if Vote.find_by_ip_and_poll_id(request.remote_ip, @poll.id) == nil
-          format.html { redirect_to "#{new_vote_url}?poll=#{@poll.id}", notice: 'You have not voted for this poll yet. Cast a vote to view results.' }
-        end
+      if Vote.find_by_ip_and_poll_id(request.remote_ip, @poll.id) == nil
+        redirect_to "#{new_vote_url}?poll=#{@poll.id}", notice: 'You have not voted for this poll yet. Cast a vote to view results.' 
+      else
+        #format.html { redirect_to "#{votes_url}?poll=#{@poll.id}", notice: 'View results.' }
       end
     else
       @poll = Poll.new
