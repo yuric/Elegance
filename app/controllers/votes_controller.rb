@@ -44,7 +44,7 @@ class VotesController < ApplicationController
     #latitude and longitude detection for later
     respond_to do |format|
       if Vote.find_by_ip_and_poll_id(@vote.ip, @vote.poll_id)
-        format.html { redirect_to "#{polls_url}", notice: 'You have already cast a successful vote for this poll. Try another one.' }        
+        format.html { redirect_to "#{polls_url}", alert: 'You have already cast a successful vote for this poll. Try another one.' }        
       elsif @vote.save
         format.html { redirect_to "#{votes_url}?poll=#{@vote.answer.poll.id}", notice: 'Vote was successfully cast.' }
         format.json { render action: 'show', status: :created, location: @vote }
