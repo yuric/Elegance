@@ -18,6 +18,8 @@
         <td>
           <%= link_to t('.vote', :default => "Vote"),
                       "/votes/new?poll=#{poll.id}", :class => 'btn btn-mini btn-success' %>
+          <%= link_to t('.results', :default => "View results"),
+                      "#{votes_path}?poll=#{poll.id}", :class => 'btn btn-mini btn-primary' %>
           <%if !poll.poll_has_votes?%>
             <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_poll_path(poll), :class => 'btn btn-mini' %>

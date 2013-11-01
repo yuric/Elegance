@@ -5,7 +5,7 @@
 
 Elegance is a simple pooling web-application that take polls in a quick and simple maner.
 
-## Getting Started
+## Getting Started 
  
 1. Download Elegance and install dependancies:
 
@@ -13,9 +13,12 @@ Elegance is a simple pooling web-application that take polls in a quick and simp
 
 2. Start the web server:
 
-        rails server
+        rake db:migrate
 
-3. Go to http://localhost:3000 and you'll see the welcome page.
+3. Todo:
+
+4. Todo:
+
 
 ## Contributing
 
