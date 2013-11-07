@@ -8,7 +8,7 @@
     <strong>Question: </strong><%="#{@poll.question}\n"%>
   </div>
   <%if @poll.answers.count > 0 %>
-    <% @poll.answers.each_with_index do |answer,|%>
+    <% @poll.answers.each_with_index do |answer,i|%>
         <%="\t#{answer.content}"%> (<%="#{answer.votes.count}\n"%> votes)
         <div class="progress progress-striped active">
           <div class="bar" style="width: <%=answer.votes.count%>1%;"></div>

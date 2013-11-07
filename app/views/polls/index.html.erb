@@ -7,6 +7,7 @@
     <tr>
       <th>Results</th>
       <th><%= model_class.human_attribute_name(:question) %></th>
+      <th>Votes<th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -15,6 +16,7 @@
       <tr>
         <td><%= link_to poll.id, "#{votes_path}?poll=#{poll.id}" %></td>
         <td><%= truncate(poll.question, :length => 70) %></td>
+        <td><%=calculate_votes(poll)%><td>
         <td>
           <%= link_to t('.vote', :default => "Vote"),
                       "/votes/new?poll=#{poll.id}", :class => 'btn btn-mini btn-success' %>
