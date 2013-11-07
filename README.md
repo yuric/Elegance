@@ -3,12 +3,16 @@
 
 ## Welcome to Elegance
 
-Elegance is a simple pooling web-application that take polls in a quick and simple maner.
+Elegance is a simple web-application that take polls in a quick and simple maner.
 
 1. It allows you to create polls with answers
 2. 2 to 5 answers per poll
 3. One vote per IP
-4. Polls can only be edited by IP that created it AND if it has no votes.
+4. Polls can only be edited by IP that created it if and only if it has no votes.
+5. To view results IP must vote.
+
+
+** Check it out, fork it, commit awesomeness, and create a pull request! 
 
 
 ## Getting Started 
