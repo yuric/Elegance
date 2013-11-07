@@ -5,13 +5,19 @@
 
 Elegance is a simple pooling web-application that take polls in a quick and simple maner.
 
+1. It allows you to create polls with answers
+2. 2 to 5 answers per poll
+3. One vote per IP
+4. Polls can only be edited by IP that created it AND if it has no votes.
+
+
 ## Getting Started 
  
 1. Download Elegance and install dependancies:
 
         bundle install
 
-2. Start the web server:
+2. Migrate the Database
 
         rake db:migrate
 
